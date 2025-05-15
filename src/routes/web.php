@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $relou = "rellow";
     return view('welcome');
+});
+
+Route::get('/welcome', function () {
+    $relou = "rellow";
+    return response()->json([
+        "message" => "hello world"
+    ]);
 });
