@@ -3,7 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-
+//src/app/Http/Kernel.php
 class Kernel extends HttpKernel
 {
     /**

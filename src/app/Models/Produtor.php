@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Produtor extends Model
+{
+    use HasFactory;
+    protected $table = 'produtores';
+    
+    protected $fillable = ['nome', 'email', 'senha'];
+
+    public function eventos() {
+        return $this->hasMany(Evento::class, 'id_produtor');
+    }
+}
