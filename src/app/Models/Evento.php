@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Evento extends Model
 {
     use HasFactory;
-    protected $fillable = ['id_produtor', 'data', 'cidade', 'local', 'hora_inicio', 'hora_fim'];
+    protected $fillable = ['id_produtor', 'nome', 'data', 'cidade', 'local', 'hora_inicio', 'hora_fim'];
 
     public function produtor() {
         return $this->belongsTo(Produtor::class, 'id_produtor');

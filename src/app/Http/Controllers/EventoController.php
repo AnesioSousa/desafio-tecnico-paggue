@@ -27,17 +27,19 @@ class EventoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+        // Banner pode ser só um link pra um bucket do aws?
     public function store(StoreEventoRequest $request)
     {
         $data = $request->validate([
-            'id_produtor' => 'required|exists:produtores,id',
-            'data' => 'required|date',
-            'cidade' => 'required|string',
-            'local' => 'required|string',
-            'hora_inicio' => 'required',
-            'hora_fim' => 'required',
-            'banner' => 'nullable|image'
-        ]);
+                'id_produtor' => 'required|exists:produtores,id',
+                'nome' => 'required|string|max:255',
+                'data' => 'required|date',
+                'cidade' => 'required|string',
+                'local' => 'required|string',
+                'hora_inicio' => 'required',
+                'hora_fim' => 'required',
+                'banner' => 'nullable|image'
+            ]);
 
         if ($request->hasFile('banner')) {
             $path = $request->file('banner')->store('banners', env('APP_ENV') === 'production' ? 's3' : 'public');
@@ -69,6 +71,7 @@ class EventoController extends Controller
     public function update(UpdateEventoRequest $request, Evento $evento)
     {
         $data = $request->validate([
+            'nome' => 'required|string|max:255',
             'data' => 'sometimes|date',
             'cidade' => 'sometimes|string',
             'local' => 'sometimes|string',

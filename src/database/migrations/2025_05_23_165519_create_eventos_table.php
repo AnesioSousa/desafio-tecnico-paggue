@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_produtor')->constrained('produtores')->onDelete('cascade');
+            $table->string('nome');
             $table->date('data');
             $table->string('cidade');
             $table->string('local');
