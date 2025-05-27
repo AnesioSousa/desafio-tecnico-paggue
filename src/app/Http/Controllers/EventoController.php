@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEventoRequest;
 use App\Http\Requests\UpdateEventoRequest;
 use App\Models\Evento;
+use App\Models\Produtor;
 
 class EventoController extends Controller
 {
@@ -52,10 +53,22 @@ class EventoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Evento $evento)
+    public function show(Produtor $produtor, Evento $evento)
     {
         return $evento;
     }
+
+    /*
+      Display the specified resource.
+     
+    public function show(Produtor $produtor, Evento $evento)
+    {
+        $evento = Evento::where('id', $evento)
+             ->where('produtor_id', $produtor)
+             ->firstOrFail();
+         return response()->json($evento);
+    }
+    */
 
     /**
      * Show the form for editing the specified resource.
@@ -97,4 +110,13 @@ class EventoController extends Controller
         $evento->delete();
         return response()->noContent();
     }
+
+    public function showFromProdutor(Produtor $produtor, Evento $evento)
+{
+    if ($evento->produtor_id !== $produtor->id) {
+        return response()->json(['message' => 'Evento não pertence a este produtor.'], 404);
+    }
+
+    return response()->json($evento);
+}
 }
