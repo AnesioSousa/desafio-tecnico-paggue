@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
             // Add other seeders here
         ]);*/
 
-        $this->call(DemoDataSeeder::class);
+        $this->call([
+            RolesAndPermissionsSeeder::class,
+            DemoDataSeeder::class,
+        ]);
     }
 }

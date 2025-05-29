@@ -18,8 +18,7 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'phone' => 'nullable|string',
-            'cpf_cnpj' => 'nullable|string|unique:users',
-            'role' => 'in:admin,producer,client'
+            'cpf_cnpj' => 'nullable|string|unique:users'
         ]);
 
         $user = User::create([
@@ -28,8 +27,10 @@ class AuthController extends Controller
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'] ?? null,
             'cpf_cnpj' => $data['cpf_cnpj'] ?? null,
-            'role' => $data['role'],
+            'role' => 'client', // legacy
         ]);
+
+        $user->assignRole('client');
 
         $token = $user->createToken('API Token')->accessToken;
 

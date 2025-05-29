@@ -2,108 +2,91 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\UpdateEventoRequest;
 use App\Models\Event;
-use App\Models\Produtor;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth:api');
+        $this->middleware('role:producer|admin');
+        // Automatically apply policy methods:
+        //  index→viewAny, show→view, store→create, update→update, destroy→delete
         $this->authorizeResource(Event::class, 'event');
     }
 
-    /**
-     * Display a listing of the resource.
-     */
+    /** GET /events */
     public function index()
     {
         return Event::all();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    // Banner pode ser só um link pra um bucket do aws?
+    /** POST /events */
     public function store(Request $request)
     {
+        // Calls EventPolicy::create under the hood
         $data = $request->validate([
             'title' => 'required|string',
             'description' => 'nullable|string',
-            'banner_url' => 'nullable|url',
+            'banner' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'date' => 'required|date',
-            'start_time' => 'required',
-            'end_time' => 'required',
+            'start_time' => 'required|date_format:H:i:s',
+            'end_time' => 'required|date_format:H:i:s',
             'city' => 'required|string',
             'venue' => 'required|string',
         ]);
-        $data['producer_id'] = $request->user()->id;
-        return Event::create($data);
-    }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Produtor $produtor, Event $event)
-    {
-        return $event;
-    }
-
-    /*
-      Display the specified resource.
-     
-    public function show(Produtor $produtor, Event $evento)
-    {
-        $evento = Event::where('id', $evento)
-             ->where('produtor_id', $produtor)
-             ->firstOrFail();
-         return response()->json($evento);
-    }
-    */
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Event $evento)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Event $event)
-    {
-        $event->update($request->only(['title', 'description', 'banner_url', 'date', 'start_time', 'end_time', 'city', 'venue']));
-        return $event;
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Event $event)
-    {
-        $event->delete();
-        return response()->noContent();
-    }
-
-    /*
-    public function showFromProdutor(Produtor $produtor, Event $evento)
-    {
-        if ($evento->produtor_id !== $produtor->id) {
-            return response()->json(['message' => 'Event não pertence a este produtor.'], 404);
+        if ($request->hasFile('banner')) {
+            $path = $request->file('banner')->store('events/banners', 's3');
+            $data['banner_url'] = Storage::disk('s3')->url($path);
         }
 
-        return response()->json($evento);
-    }*/
+        $data['producer_id'] = $request->user()->id;
+
+        $event = Event::create($data);
+
+        return response()->json($event, 201);
+    }
+
+    /** GET /events/{event} */
+    public function show(Event $event)
+    {
+        return response()->json($event);
+    }
+
+    /** PUT/PATCH /events/{event} */
+    public function update(Request $request, Event $event)
+    {
+        // Calls EventPolicy::update under the hood
+        $data = $request->validate([
+            'title' => 'sometimes|string',
+            'description' => 'nullable|string',
+            'banner' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'date' => 'sometimes|date',
+            'start_time' => 'sometimes|date_format:H:i:s',
+            'end_time' => 'sometimes|date_format:H:i:s',
+            'city' => 'sometimes|string',
+            'venue' => 'sometimes|string',
+        ]);
+
+        if ($request->hasFile('banner')) {
+            $path = $request->file('banner')->store('events/banners', 's3');
+            $data['banner_url'] = Storage::disk('s3')->url($path);
+        }
+
+        $event->update($data);
+
+        return response()->json($event);
+    }
+
+    /** DELETE /events/{event} */
+    public function destroy(Event $event)
+    {
+        // Calls EventPolicy::delete under the hood
+        $event->delete();
+
+        return response()->noContent();
+    }
 }

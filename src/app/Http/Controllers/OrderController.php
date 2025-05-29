@@ -10,14 +10,18 @@ class OrderController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api');
+        $this->authorizeResource(Order::class, 'order');
     }
     /**
      * Display a listing of the resource.
      */
 
-    public function index()
+    public function index(Request $request)
     {
-        return Order::all();
+        if ($request->user()->hasRole('producer')) {
+            return Order::all();
+        }
+        return Order::where('user_id', $request->user()->id)->get();
     }
 
 

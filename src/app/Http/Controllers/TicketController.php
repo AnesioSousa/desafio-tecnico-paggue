@@ -10,13 +10,21 @@ class TicketController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api');
+        $this->authorizeResource(Ticket::class, 'ticket');
     }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return Ticket::all();
+        if ($request->user()->hasRole('producer')) {
+            return Ticket::all();
+        }
+        return Ticket::whereHas(
+            'order',
+            fn($q) =>
+            $q->where('user_id', $request->user()->id)
+        )->get();
     }
 
     /**

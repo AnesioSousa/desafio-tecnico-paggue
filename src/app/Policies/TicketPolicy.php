@@ -5,15 +5,25 @@ namespace App\Policies;
 use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TicketPolicy
 {
+    use HandlesAuthorization;
+
+    public function before(User $user, $ability)
+    {
+        if ($user->hasRole('admin')) {
+            return true;
+        }
+    }
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        //
+        // all?
+        return $user->hasAnyRole(['producer', 'client']);
     }
 
     /**
@@ -21,7 +31,8 @@ class TicketPolicy
      */
     public function view(User $user, Ticket $ticket): bool
     {
-        //
+        return $user->hasRole('producer')
+            || $ticket->order->user_id === $user->id;
     }
 
     /**
@@ -29,7 +40,7 @@ class TicketPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return false;
     }
 
     /**
@@ -37,7 +48,7 @@ class TicketPolicy
      */
     public function update(User $user, Ticket $ticket): bool
     {
-        //
+        return $user->hasRole('producer');
     }
 
     /**
@@ -45,7 +56,7 @@ class TicketPolicy
      */
     public function delete(User $user, Ticket $ticket): bool
     {
-        //
+        return $user->hasRole('producer');
     }
 
     /**

@@ -5,15 +5,24 @@ namespace App\Policies;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class OrderPolicy
 {
+    use HandlesAuthorization;
+
+    public function before(User $user, $ability)
+    {
+        if ($user->hasRole('admin')) {
+            return true;
+        }
+    }
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->hasAnyRole(['producer', 'client']);
     }
 
     /**
@@ -21,7 +30,7 @@ class OrderPolicy
      */
     public function view(User $user, Order $order): bool
     {
-        //
+        return $user->hasRole('producer') || $order->user_id === $user->id;
     }
 
     /**
@@ -29,7 +38,7 @@ class OrderPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->hasAnyRole(['producer', 'client']);
     }
 
     /**
@@ -37,7 +46,8 @@ class OrderPolicy
      */
     public function update(User $user, Order $order): bool
     {
-        //
+        // only producers may update an order - its that correct? 
+        return $user->hasRole('producer');
     }
 
     /**
@@ -45,10 +55,11 @@ class OrderPolicy
      */
     public function delete(User $user, Order $order): bool
     {
-        //
+        // only producers may delete an order
+        return $user->hasRole('producer');
     }
 
-    /**
+    /** 
      * Determine whether the user can restore the model.
      */
     public function restore(User $user, Order $order): bool

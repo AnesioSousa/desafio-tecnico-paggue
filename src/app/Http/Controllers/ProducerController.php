@@ -50,8 +50,11 @@ class ProducerController extends Controller
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'] ?? null,
             'cpf_cnpj' => $data['cpf_cnpj'] ?? null,
-            'role' => 'producer',
+            'role' => 'producer',  //legacy
+
         ]);
+
+        $user->assignRole('producer');
 
         return response()->json($user, 201);
     }
