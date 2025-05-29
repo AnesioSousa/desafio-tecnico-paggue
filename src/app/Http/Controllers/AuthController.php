@@ -6,7 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use Laravel\Passport\TokenRepository;
+use Laravel\Passport\RefreshTokenRepository;
 class AuthController extends Controller
 {
     // POST /api/v1/register
@@ -14,52 +15,51 @@ class AuthController extends Controller
     {
         $data = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'phone' => 'nullable|string',
+            'cpf_cnpj' => 'nullable|string|unique:users',
+            'role' => 'in:admin,producer,client'
         ]);
 
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone' => $data['phone'] ?? null,
+            'cpf_cnpj' => $data['cpf_cnpj'] ?? null,
+            'role' => $data['role'],
         ]);
 
-        // cria token de acesso
-        $token = $user->createToken('authToken')->accessToken;
+        $token = $user->createToken('API Token')->accessToken;
 
-        return response()->json([
-            'user' => $user,
-            'token' => $token,
-        ], 201);
+        return response()->json(['user' => $user, 'token' => $token], 201);
     }
 
     // POST /api/v1/login
     public function login(Request $request)
     {
-        $creds = $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
+        $data = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string'
         ]);
 
-        if (!Auth::attempt($creds)) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+        $user = User::where('email', $data['email'])->first();
+        if (!$user || !Hash::check($data['password'], $user->password)) {
+            return response()->json(['error' => 'Invalid credentials'], 401);
         }
 
-        /** @var \App\Models\User $user **/
-        $user = Auth::user();
-        $token = $user->createToken('authToken')->accessToken;
-
-        return response()->json([
-            'user' => $user,
-            'token' => $token,
-        ]);
+        $token = $user->createToken('API Token')->accessToken;
+        return response()->json(['user' => $user, 'token' => $token]);
     }
 
     // opcional: POST /api/v1/logout
     public function logout(Request $request)
     {
-        $request->user()->token()->revoke();
-        return response()->json(['message' => 'Logged out'], 200);
+        $accessToken = $request->user()->token();
+        app(TokenRepository::class)->revokeAccessToken($accessToken->id);
+        app(RefreshTokenRepository::class)->revokeRefreshTokensByAccessTokenId($accessToken->id);
+        return response()->json(['message' => 'Logged out']);
     }
 
     // opcional: GET /api/v1/user

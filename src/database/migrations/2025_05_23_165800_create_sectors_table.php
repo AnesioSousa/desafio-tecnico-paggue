@@ -10,15 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
+        Schema::create('sectors', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->foreignId('event_id')->constrained('events')->onDelete('cascade');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('phone');
-            $table->string('cpf_cnpj')->unique();
-            $table->enum('role', ['admin', 'producer', 'client'])->default('client');
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('sectors');
     }
 };
