@@ -122,3 +122,8 @@ Este é o **desafio técnico Paggue**, um sistema completo para gerenciamento de
 ## 📄 License
 
 Este projeto está sob a licença **MIT**.
+
+## 🚀 Pontos críticos a serem resolvidos (fiquei doente no meio do processo seletivo)
+* Integração com o pix web da Paggue
+* Deploy em ambiente Kubernetes (k3s)
+* Aumentar a coverage de tests para 80% (está em 11,7%)
