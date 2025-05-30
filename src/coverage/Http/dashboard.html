@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for /var/www/html/app/Http</title>
+  <title>Dashboard for /var/www/app/Http</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../_css/bootstrap.min.css?v=10.1.16" rel="stylesheet" type="text/css">
   <link href="../_css/nv.d3.min.css?v=10.1.16" rel="stylesheet" type="text/css">
@@ -16,7 +16,7 @@
      <div class="col-md-12">
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
-         <li class="breadcrumb-item"><a href="../index.html">/var/www/html/app</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">/var/www/app</a></li>
          <li class="breadcrumb-item"><a href="index.html">Http</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
@@ -58,9 +58,27 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="Middleware/Authenticate.php.html#8">App\Http\Middleware\Authenticate</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AuthController.php.html#11">App\Http\Controllers\AuthController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/BatchController.php.html#8">App\Http\Controllers\BatchController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/CouponController.php.html#8">App\Http\Controllers\CouponController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/NotificationController.php.html#10">App\Http\Controllers\NotificationController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#8">App\Http\Controllers\OrderController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/PaymentController.php.html#12">App\Http\Controllers\PaymentController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProducerController.php.html#9">App\Http\Controllers\ProducerController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/SectorController.php.html#8">App\Http\Controllers\SectorController</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/TicketController.php.html#8">App\Http\Controllers\TicketController</a></td><td class="text-right">0%</td></tr>
        <tr><td><a href="Middleware/RedirectIfAuthenticated.php.html#11">App\Http\Middleware\RedirectIfAuthenticated</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Middleware/RoleMiddleware.php.html#9">App\Http\Middleware\RoleMiddleware</a></td><td class="text-right">0%</td></tr>
        <tr><td><a href="Middleware/TrustHosts.php.html#7">App\Http\Middleware\TrustHosts</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/StoreNotificationRequest.php.html#7">App\Http\Requests\StoreNotificationRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/StoreOrderRequest.php.html#7">App\Http\Requests\StoreOrderRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/StorePaymentRequest.php.html#7">App\Http\Requests\StorePaymentRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/StoreTicketRequest.php.html#7">App\Http\Requests\StoreTicketRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/UpdateNotificationRequest.php.html#7">App\Http\Requests\UpdateNotificationRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/UpdateOrderRequest.php.html#7">App\Http\Requests\UpdateOrderRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/UpdatePaymentRequest.php.html#7">App\Http\Requests\UpdatePaymentRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/UpdateTicketRequest.php.html#7">App\Http\Requests\UpdateTicketRequest</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/EventController.php.html#9">App\Http\Controllers\EventController</a></td><td class="text-right">47%</td></tr>
 
        </tbody>
       </table>
@@ -77,8 +95,13 @@
         </tr>
        </thead>
        <tbody>
+       <tr><td><a href="Controllers/OrderController.php.html#8">App\Http\Controllers\OrderController</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Controllers/ProducerController.php.html#9">App\Http\Controllers\ProducerController</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Controllers/TicketController.php.html#8">App\Http\Controllers\TicketController</a></td><td class="text-right">90</td></tr>
+       <tr><td><a href="Controllers/AuthController.php.html#11">App\Http\Controllers\AuthController</a></td><td class="text-right">42</td></tr>
        <tr><td><a href="Middleware/RedirectIfAuthenticated.php.html#11">App\Http\Middleware\RedirectIfAuthenticated</a></td><td class="text-right">20</td></tr>
-       <tr><td><a href="Middleware/Authenticate.php.html#8">App\Http\Middleware\Authenticate</a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/EventController.php.html#9">App\Http\Controllers\EventController</a></td><td class="text-right">17</td></tr>
+       <tr><td><a href="Middleware/RoleMiddleware.php.html#9">App\Http\Middleware\RoleMiddleware</a></td><td class="text-right">12</td></tr>
 
        </tbody>
       </table>
@@ -116,9 +139,97 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="Middleware/Authenticate.php.html#13"><abbr title="App\Http\Middleware\Authenticate::redirectTo">redirectTo</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AuthController.php.html#14"><abbr title="App\Http\Controllers\AuthController::register">register</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AuthController.php.html#41"><abbr title="App\Http\Controllers\AuthController::login">login</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AuthController.php.html#58"><abbr title="App\Http\Controllers\AuthController::logout">logout</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/AuthController.php.html#67"><abbr title="App\Http\Controllers\AuthController::user">user</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/BatchController.php.html#13"><abbr title="App\Http\Controllers\BatchController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/BatchController.php.html#21"><abbr title="App\Http\Controllers\BatchController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/BatchController.php.html#26"><abbr title="App\Http\Controllers\BatchController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/BatchController.php.html#34"><abbr title="App\Http\Controllers\BatchController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/BatchController.php.html#49"><abbr title="App\Http\Controllers\BatchController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/BatchController.php.html#57"><abbr title="App\Http\Controllers\BatchController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/BatchController.php.html#65"><abbr title="App\Http\Controllers\BatchController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/BatchController.php.html#74"><abbr title="App\Http\Controllers\BatchController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/CouponController.php.html#10"><abbr title="App\Http\Controllers\CouponController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/CouponController.php.html#18"><abbr title="App\Http\Controllers\CouponController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/CouponController.php.html#26"><abbr title="App\Http\Controllers\CouponController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/CouponController.php.html#34"><abbr title="App\Http\Controllers\CouponController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/CouponController.php.html#49"><abbr title="App\Http\Controllers\CouponController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/CouponController.php.html#57"><abbr title="App\Http\Controllers\CouponController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/CouponController.php.html#65"><abbr title="App\Http\Controllers\CouponController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/CouponController.php.html#74"><abbr title="App\Http\Controllers\CouponController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/EventController.php.html#54"><abbr title="App\Http\Controllers\EventController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/EventController.php.html#60"><abbr title="App\Http\Controllers\EventController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/EventController.php.html#85"><abbr title="App\Http\Controllers\EventController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/NotificationController.php.html#12"><abbr title="App\Http\Controllers\NotificationController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/NotificationController.php.html#19"><abbr title="App\Http\Controllers\NotificationController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/NotificationController.php.html#27"><abbr title="App\Http\Controllers\NotificationController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/NotificationController.php.html#35"><abbr title="App\Http\Controllers\NotificationController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/NotificationController.php.html#50"><abbr title="App\Http\Controllers\NotificationController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/NotificationController.php.html#58"><abbr title="App\Http\Controllers\NotificationController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/NotificationController.php.html#66"><abbr title="App\Http\Controllers\NotificationController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/NotificationController.php.html#75"><abbr title="App\Http\Controllers\NotificationController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#10"><abbr title="App\Http\Controllers\OrderController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#19"><abbr title="App\Http\Controllers\OrderController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#34"><abbr title="App\Http\Controllers\OrderController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#42"><abbr title="App\Http\Controllers\OrderController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#54"><abbr title="App\Http\Controllers\OrderController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#64"><abbr title="App\Http\Controllers\OrderController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#72"><abbr title="App\Http\Controllers\OrderController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#81"><abbr title="App\Http\Controllers\OrderController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/PaymentController.php.html#14"><abbr title="App\Http\Controllers\PaymentController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/PaymentController.php.html#21"><abbr title="App\Http\Controllers\PaymentController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/PaymentController.php.html#29"><abbr title="App\Http\Controllers\PaymentController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/PaymentController.php.html#37"><abbr title="App\Http\Controllers\PaymentController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/PaymentController.php.html#51"><abbr title="App\Http\Controllers\PaymentController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/PaymentController.php.html#59"><abbr title="App\Http\Controllers\PaymentController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/PaymentController.php.html#67"><abbr title="App\Http\Controllers\PaymentController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/PaymentController.php.html#76"><abbr title="App\Http\Controllers\PaymentController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/PaymentController.php.html#82"><abbr title="App\Http\Controllers\PaymentController::webhook">webhook</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/PaymentController.php.html#93"><abbr title="App\Http\Controllers\PaymentController::fake">fake</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProducerController.php.html#11"><abbr title="App\Http\Controllers\ProducerController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProducerController.php.html#21"><abbr title="App\Http\Controllers\ProducerController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProducerController.php.html#29"><abbr title="App\Http\Controllers\ProducerController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProducerController.php.html#37"><abbr title="App\Http\Controllers\ProducerController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProducerController.php.html#65"><abbr title="App\Http\Controllers\ProducerController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProducerController.php.html#74"><abbr title="App\Http\Controllers\ProducerController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProducerController.php.html#83"><abbr title="App\Http\Controllers\ProducerController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/ProducerController.php.html#106"><abbr title="App\Http\Controllers\ProducerController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/SectorController.php.html#10"><abbr title="App\Http\Controllers\SectorController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/SectorController.php.html#15"><abbr title="App\Http\Controllers\SectorController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/SectorController.php.html#20"><abbr title="App\Http\Controllers\SectorController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/SectorController.php.html#29"><abbr title="App\Http\Controllers\SectorController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/SectorController.php.html#34"><abbr title="App\Http\Controllers\SectorController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/SectorController.php.html#40"><abbr title="App\Http\Controllers\SectorController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/TicketController.php.html#10"><abbr title="App\Http\Controllers\TicketController::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/TicketController.php.html#19"><abbr title="App\Http\Controllers\TicketController::index">index</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/TicketController.php.html#34"><abbr title="App\Http\Controllers\TicketController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/TicketController.php.html#42"><abbr title="App\Http\Controllers\TicketController::store">store</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/TicketController.php.html#56"><abbr title="App\Http\Controllers\TicketController::show">show</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/TicketController.php.html#64"><abbr title="App\Http\Controllers\TicketController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/TicketController.php.html#72"><abbr title="App\Http\Controllers\TicketController::update">update</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/TicketController.php.html#82"><abbr title="App\Http\Controllers\TicketController::destroy">destroy</abbr></a></td><td class="text-right">0%</td></tr>
        <tr><td><a href="Middleware/RedirectIfAuthenticated.php.html#18"><abbr title="App\Http\Middleware\RedirectIfAuthenticated::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Middleware/RoleMiddleware.php.html#16"><abbr title="App\Http\Middleware\RoleMiddleware::handle">handle</abbr></a></td><td class="text-right">0%</td></tr>
        <tr><td><a href="Middleware/TrustHosts.php.html#14"><abbr title="App\Http\Middleware\TrustHosts::hosts">hosts</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/StoreNotificationRequest.php.html#12"><abbr title="App\Http\Requests\StoreNotificationRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/StoreNotificationRequest.php.html#22"><abbr title="App\Http\Requests\StoreNotificationRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/StoreOrderRequest.php.html#12"><abbr title="App\Http\Requests\StoreOrderRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/StoreOrderRequest.php.html#22"><abbr title="App\Http\Requests\StoreOrderRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/StorePaymentRequest.php.html#12"><abbr title="App\Http\Requests\StorePaymentRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/StorePaymentRequest.php.html#22"><abbr title="App\Http\Requests\StorePaymentRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/StoreTicketRequest.php.html#12"><abbr title="App\Http\Requests\StoreTicketRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/StoreTicketRequest.php.html#22"><abbr title="App\Http\Requests\StoreTicketRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/UpdateNotificationRequest.php.html#12"><abbr title="App\Http\Requests\UpdateNotificationRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/UpdateNotificationRequest.php.html#22"><abbr title="App\Http\Requests\UpdateNotificationRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/UpdateOrderRequest.php.html#12"><abbr title="App\Http\Requests\UpdateOrderRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/UpdateOrderRequest.php.html#22"><abbr title="App\Http\Requests\UpdateOrderRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/UpdatePaymentRequest.php.html#12"><abbr title="App\Http\Requests\UpdatePaymentRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/UpdatePaymentRequest.php.html#22"><abbr title="App\Http\Requests\UpdatePaymentRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/UpdateTicketRequest.php.html#12"><abbr title="App\Http\Requests\UpdateTicketRequest::authorize">authorize</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Requests/UpdateTicketRequest.php.html#22"><abbr title="App\Http\Requests\UpdateTicketRequest::rules">rules</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controllers/EventController.php.html#27"><abbr title="App\Http\Controllers\EventController::store">store</abbr></a></td><td class="text-right">87%</td></tr>
 
        </tbody>
       </table>
@@ -136,7 +247,13 @@
        </thead>
        <tbody>
        <tr><td><a href="Middleware/RedirectIfAuthenticated.php.html#18"><abbr title="App\Http\Middleware\RedirectIfAuthenticated::handle">handle</abbr></a></td><td class="text-right">20</td></tr>
-       <tr><td><a href="Middleware/Authenticate.php.html#13"><abbr title="App\Http\Middleware\Authenticate::redirectTo">redirectTo</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/AuthController.php.html#41"><abbr title="App\Http\Controllers\AuthController::login">login</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Middleware/RoleMiddleware.php.html#16"><abbr title="App\Http\Middleware\RoleMiddleware::handle">handle</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Controllers/EventController.php.html#60"><abbr title="App\Http\Controllers\EventController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/OrderController.php.html#19"><abbr title="App\Http\Controllers\OrderController::index">index</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/ProducerController.php.html#83"><abbr title="App\Http\Controllers\ProducerController::update">update</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/TicketController.php.html#19"><abbr title="App\Http\Controllers\TicketController::index">index</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Controllers/EventController.php.html#27"><abbr title="App\Http\Controllers\EventController::store">store</abbr></a></td><td class="text-right">2</td></tr>
 
        </tbody>
       </table>
@@ -146,7 +263,7 @@
    <footer>
     <hr/>
     <p>
-     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 10.1.16</a> using <a href="https://www.php.net/" target="_top">PHP 8.1.32</a> and <a href="https://phpunit.de/">PHPUnit 10.5.46</a> at Sun May 11 13:57:29 UTC 2025.</small>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 10.1.16</a> using <a href="https://www.php.net/" target="_top">PHP 8.2.28</a> and <a href="https://phpunit.de/">PHPUnit 10.5.36</a> at Fri May 30 2:05:14 UTC 2025.</small>
     </p>
    </footer>
   </div>
@@ -165,7 +282,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([3,0,0,0,0,0,0,0,0,0,0,8], "Class Coverage"))
+      .datum(getCoverageDistributionData([20,0,0,0,0,1,0,0,0,0,0,9], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -183,7 +300,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([3,0,0,0,0,0,0,0,0,0,0,0], "Method Coverage"))
+      .datum(getCoverageDistributionData([90,0,0,0,0,0,0,0,0,1,0,3], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -233,7 +350,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[100,0,"<a href=\"Controllers\/Controller.php.html#9\">App\\Http\\Controllers\\Controller<\/a>"],[100,0,"<a href=\"Kernel.php.html#7\">App\\Http\\Kernel<\/a>"],[0,2,"<a href=\"Middleware\/Authenticate.php.html#8\">App\\Http\\Middleware\\Authenticate<\/a>"],[100,0,"<a href=\"Middleware\/EncryptCookies.php.html#7\">App\\Http\\Middleware\\EncryptCookies<\/a>"],[100,0,"<a href=\"Middleware\/PreventRequestsDuringMaintenance.php.html#7\">App\\Http\\Middleware\\PreventRequestsDuringMaintenance<\/a>"],[0,4,"<a href=\"Middleware\/RedirectIfAuthenticated.php.html#11\">App\\Http\\Middleware\\RedirectIfAuthenticated<\/a>"],[100,0,"<a href=\"Middleware\/TrimStrings.php.html#7\">App\\Http\\Middleware\\TrimStrings<\/a>"],[0,1,"<a href=\"Middleware\/TrustHosts.php.html#7\">App\\Http\\Middleware\\TrustHosts<\/a>"],[100,0,"<a href=\"Middleware\/TrustProxies.php.html#8\">App\\Http\\Middleware\\TrustProxies<\/a>"],[100,0,"<a href=\"Middleware\/ValidateSignature.php.html#7\">App\\Http\\Middleware\\ValidateSignature<\/a>"],[100,0,"<a href=\"Middleware\/VerifyCsrfToken.php.html#7\">App\\Http\\Middleware\\VerifyCsrfToken<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[0,6,"<a href=\"Controllers\/AuthController.php.html#11\">App\\Http\\Controllers\\AuthController<\/a>"],[0,8,"<a href=\"Controllers\/BatchController.php.html#8\">App\\Http\\Controllers\\BatchController<\/a>"],[100,0,"<a href=\"Controllers\/Controller.php.html#9\">App\\Http\\Controllers\\Controller<\/a>"],[0,8,"<a href=\"Controllers\/CouponController.php.html#8\">App\\Http\\Controllers\\CouponController<\/a>"],[47.368421052631575,8,"<a href=\"Controllers\/EventController.php.html#9\">App\\Http\\Controllers\\EventController<\/a>"],[0,8,"<a href=\"Controllers\/NotificationController.php.html#10\">App\\Http\\Controllers\\NotificationController<\/a>"],[0,9,"<a href=\"Controllers\/OrderController.php.html#8\">App\\Http\\Controllers\\OrderController<\/a>"],[0,10,"<a href=\"Controllers\/PaymentController.php.html#12\">App\\Http\\Controllers\\PaymentController<\/a>"],[0,9,"<a href=\"Controllers\/ProducerController.php.html#9\">App\\Http\\Controllers\\ProducerController<\/a>"],[0,6,"<a href=\"Controllers\/SectorController.php.html#8\">App\\Http\\Controllers\\SectorController<\/a>"],[0,9,"<a href=\"Controllers\/TicketController.php.html#8\">App\\Http\\Controllers\\TicketController<\/a>"],[100,0,"<a href=\"Kernel.php.html#7\">App\\Http\\Kernel<\/a>"],[100,2,"<a href=\"Middleware\/Authenticate.php.html#8\">App\\Http\\Middleware\\Authenticate<\/a>"],[100,0,"<a href=\"Middleware\/EncryptCookies.php.html#7\">App\\Http\\Middleware\\EncryptCookies<\/a>"],[100,0,"<a href=\"Middleware\/PreventRequestsDuringMaintenance.php.html#7\">App\\Http\\Middleware\\PreventRequestsDuringMaintenance<\/a>"],[0,4,"<a href=\"Middleware\/RedirectIfAuthenticated.php.html#11\">App\\Http\\Middleware\\RedirectIfAuthenticated<\/a>"],[0,3,"<a href=\"Middleware\/RoleMiddleware.php.html#9\">App\\Http\\Middleware\\RoleMiddleware<\/a>"],[100,0,"<a href=\"Middleware\/TrimStrings.php.html#7\">App\\Http\\Middleware\\TrimStrings<\/a>"],[0,1,"<a href=\"Middleware\/TrustHosts.php.html#7\">App\\Http\\Middleware\\TrustHosts<\/a>"],[100,0,"<a href=\"Middleware\/TrustProxies.php.html#8\">App\\Http\\Middleware\\TrustProxies<\/a>"],[100,0,"<a href=\"Middleware\/ValidateSignature.php.html#7\">App\\Http\\Middleware\\ValidateSignature<\/a>"],[100,0,"<a href=\"Middleware\/VerifyCsrfToken.php.html#7\">App\\Http\\Middleware\\VerifyCsrfToken<\/a>"],[0,2,"<a href=\"Requests\/StoreNotificationRequest.php.html#7\">App\\Http\\Requests\\StoreNotificationRequest<\/a>"],[0,2,"<a href=\"Requests\/StoreOrderRequest.php.html#7\">App\\Http\\Requests\\StoreOrderRequest<\/a>"],[0,2,"<a href=\"Requests\/StorePaymentRequest.php.html#7\">App\\Http\\Requests\\StorePaymentRequest<\/a>"],[0,2,"<a href=\"Requests\/StoreTicketRequest.php.html#7\">App\\Http\\Requests\\StoreTicketRequest<\/a>"],[0,2,"<a href=\"Requests\/UpdateNotificationRequest.php.html#7\">App\\Http\\Requests\\UpdateNotificationRequest<\/a>"],[0,2,"<a href=\"Requests\/UpdateOrderRequest.php.html#7\">App\\Http\\Requests\\UpdateOrderRequest<\/a>"],[0,2,"<a href=\"Requests\/UpdatePaymentRequest.php.html#7\">App\\Http\\Requests\\UpdatePaymentRequest<\/a>"],[0,2,"<a href=\"Requests\/UpdateTicketRequest.php.html#7\">App\\Http\\Requests\\UpdateTicketRequest<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -257,7 +374,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[0,2,"<a href=\"Middleware\/Authenticate.php.html#13\">App\\Http\\Middleware\\Authenticate::redirectTo<\/a>"],[0,4,"<a href=\"Middleware\/RedirectIfAuthenticated.php.html#18\">App\\Http\\Middleware\\RedirectIfAuthenticated::handle<\/a>"],[0,1,"<a href=\"Middleware\/TrustHosts.php.html#14\">App\\Http\\Middleware\\TrustHosts::hosts<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[0,1,"<a href=\"Controllers\/AuthController.php.html#14\">App\\Http\\Controllers\\AuthController::register<\/a>"],[0,3,"<a href=\"Controllers\/AuthController.php.html#41\">App\\Http\\Controllers\\AuthController::login<\/a>"],[0,1,"<a href=\"Controllers\/AuthController.php.html#58\">App\\Http\\Controllers\\AuthController::logout<\/a>"],[0,1,"<a href=\"Controllers\/AuthController.php.html#67\">App\\Http\\Controllers\\AuthController::user<\/a>"],[0,1,"<a href=\"Controllers\/BatchController.php.html#13\">App\\Http\\Controllers\\BatchController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/BatchController.php.html#21\">App\\Http\\Controllers\\BatchController::create<\/a>"],[0,1,"<a href=\"Controllers\/BatchController.php.html#26\">App\\Http\\Controllers\\BatchController::index<\/a>"],[0,1,"<a href=\"Controllers\/BatchController.php.html#34\">App\\Http\\Controllers\\BatchController::store<\/a>"],[0,1,"<a href=\"Controllers\/BatchController.php.html#49\">App\\Http\\Controllers\\BatchController::show<\/a>"],[0,1,"<a href=\"Controllers\/BatchController.php.html#57\">App\\Http\\Controllers\\BatchController::edit<\/a>"],[0,1,"<a href=\"Controllers\/BatchController.php.html#65\">App\\Http\\Controllers\\BatchController::update<\/a>"],[0,1,"<a href=\"Controllers\/BatchController.php.html#74\">App\\Http\\Controllers\\BatchController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/CouponController.php.html#10\">App\\Http\\Controllers\\CouponController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/CouponController.php.html#18\">App\\Http\\Controllers\\CouponController::index<\/a>"],[0,1,"<a href=\"Controllers\/CouponController.php.html#26\">App\\Http\\Controllers\\CouponController::create<\/a>"],[0,1,"<a href=\"Controllers\/CouponController.php.html#34\">App\\Http\\Controllers\\CouponController::store<\/a>"],[0,1,"<a href=\"Controllers\/CouponController.php.html#49\">App\\Http\\Controllers\\CouponController::show<\/a>"],[0,1,"<a href=\"Controllers\/CouponController.php.html#57\">App\\Http\\Controllers\\CouponController::edit<\/a>"],[0,1,"<a href=\"Controllers\/CouponController.php.html#65\">App\\Http\\Controllers\\CouponController::update<\/a>"],[0,1,"<a href=\"Controllers\/CouponController.php.html#74\">App\\Http\\Controllers\\CouponController::destroy<\/a>"],[100,1,"<a href=\"Controllers\/EventController.php.html#11\">App\\Http\\Controllers\\EventController::__construct<\/a>"],[100,1,"<a href=\"Controllers\/EventController.php.html#21\">App\\Http\\Controllers\\EventController::index<\/a>"],[87.5,2,"<a href=\"Controllers\/EventController.php.html#27\">App\\Http\\Controllers\\EventController::store<\/a>"],[0,1,"<a href=\"Controllers\/EventController.php.html#54\">App\\Http\\Controllers\\EventController::show<\/a>"],[0,2,"<a href=\"Controllers\/EventController.php.html#60\">App\\Http\\Controllers\\EventController::update<\/a>"],[0,1,"<a href=\"Controllers\/EventController.php.html#85\">App\\Http\\Controllers\\EventController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/NotificationController.php.html#12\">App\\Http\\Controllers\\NotificationController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/NotificationController.php.html#19\">App\\Http\\Controllers\\NotificationController::index<\/a>"],[0,1,"<a href=\"Controllers\/NotificationController.php.html#27\">App\\Http\\Controllers\\NotificationController::create<\/a>"],[0,1,"<a href=\"Controllers\/NotificationController.php.html#35\">App\\Http\\Controllers\\NotificationController::store<\/a>"],[0,1,"<a href=\"Controllers\/NotificationController.php.html#50\">App\\Http\\Controllers\\NotificationController::show<\/a>"],[0,1,"<a href=\"Controllers\/NotificationController.php.html#58\">App\\Http\\Controllers\\NotificationController::edit<\/a>"],[0,1,"<a href=\"Controllers\/NotificationController.php.html#66\">App\\Http\\Controllers\\NotificationController::update<\/a>"],[0,1,"<a href=\"Controllers\/NotificationController.php.html#75\">App\\Http\\Controllers\\NotificationController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/OrderController.php.html#10\">App\\Http\\Controllers\\OrderController::__construct<\/a>"],[0,2,"<a href=\"Controllers\/OrderController.php.html#19\">App\\Http\\Controllers\\OrderController::index<\/a>"],[0,1,"<a href=\"Controllers\/OrderController.php.html#34\">App\\Http\\Controllers\\OrderController::create<\/a>"],[0,1,"<a href=\"Controllers\/OrderController.php.html#42\">App\\Http\\Controllers\\OrderController::store<\/a>"],[0,1,"<a href=\"Controllers\/OrderController.php.html#54\">App\\Http\\Controllers\\OrderController::show<\/a>"],[0,1,"<a href=\"Controllers\/OrderController.php.html#64\">App\\Http\\Controllers\\OrderController::edit<\/a>"],[0,1,"<a href=\"Controllers\/OrderController.php.html#72\">App\\Http\\Controllers\\OrderController::update<\/a>"],[0,1,"<a href=\"Controllers\/OrderController.php.html#81\">App\\Http\\Controllers\\OrderController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/PaymentController.php.html#14\">App\\Http\\Controllers\\PaymentController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/PaymentController.php.html#21\">App\\Http\\Controllers\\PaymentController::index<\/a>"],[0,1,"<a href=\"Controllers\/PaymentController.php.html#29\">App\\Http\\Controllers\\PaymentController::create<\/a>"],[0,1,"<a href=\"Controllers\/PaymentController.php.html#37\">App\\Http\\Controllers\\PaymentController::store<\/a>"],[0,1,"<a href=\"Controllers\/PaymentController.php.html#51\">App\\Http\\Controllers\\PaymentController::show<\/a>"],[0,1,"<a href=\"Controllers\/PaymentController.php.html#59\">App\\Http\\Controllers\\PaymentController::edit<\/a>"],[0,1,"<a href=\"Controllers\/PaymentController.php.html#67\">App\\Http\\Controllers\\PaymentController::update<\/a>"],[0,1,"<a href=\"Controllers\/PaymentController.php.html#76\">App\\Http\\Controllers\\PaymentController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/PaymentController.php.html#82\">App\\Http\\Controllers\\PaymentController::webhook<\/a>"],[0,1,"<a href=\"Controllers\/PaymentController.php.html#93\">App\\Http\\Controllers\\PaymentController::fake<\/a>"],[0,1,"<a href=\"Controllers\/ProducerController.php.html#11\">App\\Http\\Controllers\\ProducerController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/ProducerController.php.html#21\">App\\Http\\Controllers\\ProducerController::index<\/a>"],[0,1,"<a href=\"Controllers\/ProducerController.php.html#29\">App\\Http\\Controllers\\ProducerController::create<\/a>"],[0,1,"<a href=\"Controllers\/ProducerController.php.html#37\">App\\Http\\Controllers\\ProducerController::store<\/a>"],[0,1,"<a href=\"Controllers\/ProducerController.php.html#65\">App\\Http\\Controllers\\ProducerController::show<\/a>"],[0,1,"<a href=\"Controllers\/ProducerController.php.html#74\">App\\Http\\Controllers\\ProducerController::edit<\/a>"],[0,2,"<a href=\"Controllers\/ProducerController.php.html#83\">App\\Http\\Controllers\\ProducerController::update<\/a>"],[0,1,"<a href=\"Controllers\/ProducerController.php.html#106\">App\\Http\\Controllers\\ProducerController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/SectorController.php.html#10\">App\\Http\\Controllers\\SectorController::__construct<\/a>"],[0,1,"<a href=\"Controllers\/SectorController.php.html#15\">App\\Http\\Controllers\\SectorController::index<\/a>"],[0,1,"<a href=\"Controllers\/SectorController.php.html#20\">App\\Http\\Controllers\\SectorController::store<\/a>"],[0,1,"<a href=\"Controllers\/SectorController.php.html#29\">App\\Http\\Controllers\\SectorController::show<\/a>"],[0,1,"<a href=\"Controllers\/SectorController.php.html#34\">App\\Http\\Controllers\\SectorController::update<\/a>"],[0,1,"<a href=\"Controllers\/SectorController.php.html#40\">App\\Http\\Controllers\\SectorController::destroy<\/a>"],[0,1,"<a href=\"Controllers\/TicketController.php.html#10\">App\\Http\\Controllers\\TicketController::__construct<\/a>"],[0,2,"<a href=\"Controllers\/TicketController.php.html#19\">App\\Http\\Controllers\\TicketController::index<\/a>"],[0,1,"<a href=\"Controllers\/TicketController.php.html#34\">App\\Http\\Controllers\\TicketController::create<\/a>"],[0,1,"<a href=\"Controllers\/TicketController.php.html#42\">App\\Http\\Controllers\\TicketController::store<\/a>"],[0,1,"<a href=\"Controllers\/TicketController.php.html#56\">App\\Http\\Controllers\\TicketController::show<\/a>"],[0,1,"<a href=\"Controllers\/TicketController.php.html#64\">App\\Http\\Controllers\\TicketController::edit<\/a>"],[0,1,"<a href=\"Controllers\/TicketController.php.html#72\">App\\Http\\Controllers\\TicketController::update<\/a>"],[0,1,"<a href=\"Controllers\/TicketController.php.html#82\">App\\Http\\Controllers\\TicketController::destroy<\/a>"],[100,2,"<a href=\"Middleware\/Authenticate.php.html#13\">App\\Http\\Middleware\\Authenticate::redirectTo<\/a>"],[0,4,"<a href=\"Middleware\/RedirectIfAuthenticated.php.html#18\">App\\Http\\Middleware\\RedirectIfAuthenticated::handle<\/a>"],[0,3,"<a href=\"Middleware\/RoleMiddleware.php.html#16\">App\\Http\\Middleware\\RoleMiddleware::handle<\/a>"],[0,1,"<a href=\"Middleware\/TrustHosts.php.html#14\">App\\Http\\Middleware\\TrustHosts::hosts<\/a>"],[0,1,"<a href=\"Requests\/StoreNotificationRequest.php.html#12\">App\\Http\\Requests\\StoreNotificationRequest::authorize<\/a>"],[0,1,"<a href=\"Requests\/StoreNotificationRequest.php.html#22\">App\\Http\\Requests\\StoreNotificationRequest::rules<\/a>"],[0,1,"<a href=\"Requests\/StoreOrderRequest.php.html#12\">App\\Http\\Requests\\StoreOrderRequest::authorize<\/a>"],[0,1,"<a href=\"Requests\/StoreOrderRequest.php.html#22\">App\\Http\\Requests\\StoreOrderRequest::rules<\/a>"],[0,1,"<a href=\"Requests\/StorePaymentRequest.php.html#12\">App\\Http\\Requests\\StorePaymentRequest::authorize<\/a>"],[0,1,"<a href=\"Requests\/StorePaymentRequest.php.html#22\">App\\Http\\Requests\\StorePaymentRequest::rules<\/a>"],[0,1,"<a href=\"Requests\/StoreTicketRequest.php.html#12\">App\\Http\\Requests\\StoreTicketRequest::authorize<\/a>"],[0,1,"<a href=\"Requests\/StoreTicketRequest.php.html#22\">App\\Http\\Requests\\StoreTicketRequest::rules<\/a>"],[0,1,"<a href=\"Requests\/UpdateNotificationRequest.php.html#12\">App\\Http\\Requests\\UpdateNotificationRequest::authorize<\/a>"],[0,1,"<a href=\"Requests\/UpdateNotificationRequest.php.html#22\">App\\Http\\Requests\\UpdateNotificationRequest::rules<\/a>"],[0,1,"<a href=\"Requests\/UpdateOrderRequest.php.html#12\">App\\Http\\Requests\\UpdateOrderRequest::authorize<\/a>"],[0,1,"<a href=\"Requests\/UpdateOrderRequest.php.html#22\">App\\Http\\Requests\\UpdateOrderRequest::rules<\/a>"],[0,1,"<a href=\"Requests\/UpdatePaymentRequest.php.html#12\">App\\Http\\Requests\\UpdatePaymentRequest::authorize<\/a>"],[0,1,"<a href=\"Requests\/UpdatePaymentRequest.php.html#22\">App\\Http\\Requests\\UpdatePaymentRequest::rules<\/a>"],[0,1,"<a href=\"Requests\/UpdateTicketRequest.php.html#12\">App\\Http\\Requests\\UpdateTicketRequest::authorize<\/a>"],[0,1,"<a href=\"Requests\/UpdateTicketRequest.php.html#22\">App\\Http\\Requests\\UpdateTicketRequest::rules<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);
