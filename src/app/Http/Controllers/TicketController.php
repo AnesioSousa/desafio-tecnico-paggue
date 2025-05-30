@@ -10,6 +10,7 @@ class TicketController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api');
+        $this->middleware('role:admin')->only(['store', 'update', 'destroy']);
         $this->authorizeResource(Ticket::class, 'ticket');
     }
     /**
@@ -70,8 +71,9 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        $ticket->update($request->only(['status']));
-        return $ticket;
+        $this->authorize('update', $ticket);
+        $ticket->update(['status' => 'used']);
+        return response()->json($ticket);
     }
 
     /**

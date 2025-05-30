@@ -18,10 +18,13 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
-        if ($request->user()->hasRole('producer')) {
-            return Order::all();
+        $query = Order::with('tickets');
+
+        if ($request->user()->hasRole('client')) {
+            $query->where('user_id', $request->user()->id);
         }
-        return Order::where('user_id', $request->user()->id)->get();
+
+        return $query->get();
     }
 
 
@@ -50,7 +53,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return $order;
+        $this->authorize('view', $order);
+
+        return $order->load('tickets');
     }
 
     /**

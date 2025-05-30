@@ -6,6 +6,8 @@ use App\Http\Requests\StorePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use App\Jobs\ProcessPayment;
+use Illuminate\Validation\Rule;    // ← add this
 
 class PaymentController extends Controller
 {
@@ -75,5 +77,38 @@ class PaymentController extends Controller
     {
         $payment->delete();
         return response()->noContent();
+    }
+
+    public function webhook(Request $request)
+    {
+        // Validate payload...
+        $paymentId = $request->input('payment_id');
+
+        // Dispatch a job to handle everything:
+        ProcessPayment::dispatch($paymentId);
+
+        return response()->json([], 200);
+    }
+
+    public function fake(Request $request)
+    {
+        $data = $request->validate([
+            'order_id' => 'required|exists:orders,id',
+            'amount' => 'required|numeric',
+            'status' => [
+                'required',
+                Rule::in(['waiting', 'success', 'failed']),
+                // if you really want “success” here, add it to both this list
+                // and to your DB enum constraint (or migration)
+            ],
+            'pix_payload' => 'nullable|string',
+            'pix_transaction_id' => 'nullable|string',
+        ]);
+
+        $payment = Payment::create($data);
+
+        ProcessPayment::dispatch($payment->id);
+
+        return response()->json($payment, 201);
     }
 }

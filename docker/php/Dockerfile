@@ -8,6 +8,10 @@ RUN apt-get update && apt-get install -y \
 # Instalar Xdebug
 RUN pecl install xdebug && docker-php-ext-enable xdebug
 
+# Install the PHP redis extension
+RUN pecl install redis \
+ && docker-php-ext-enable redis
+
 # Ativar mod_rewrite
 RUN a2enmod rewrite
 

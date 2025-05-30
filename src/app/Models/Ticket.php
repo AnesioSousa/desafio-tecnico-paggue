@@ -11,6 +11,7 @@ class Ticket extends Model
 
     protected $fillable = ['order_id', 'batch_id', 'coupon_id', 'status'];
 
+
     public function order()
     {
         return $this->belongsTo(Order::class);

@@ -18,7 +18,8 @@ Route::prefix('v1')->group(function () {
     // Public endpoints
     Route::post('register', [AuthController::class, 'register'])->name('register');
     Route::post('login', [AuthController::class, 'login'])->name('login');
-    // public...
+    Route::post('payments/fake', [PaymentController::class, 'fake'])->middleware('auth:api');
+
     Route::middleware('auth:api')->group(function () {
         // admin-only…
         Route::middleware('role:admin')
