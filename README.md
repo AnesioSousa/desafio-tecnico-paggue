@@ -1,5 +1,4 @@
-# Paggue - Sistema de Gestão de Eventos e Pagamentos
-
+# <img src="https://github.com/user-attachments/assets/46aac08b-80d9-40e3-b226-f912ec875555" style="height:30px;width:30px"/> Paggue - Sistema de Gestão de Eventos e Pagamentos
 Este é o **desafio técnico Paggue**, um sistema completo para gerenciamento de eventos e processamento de pagamentos online.
 
 ## 📋 Tecnologias Utilizadas
