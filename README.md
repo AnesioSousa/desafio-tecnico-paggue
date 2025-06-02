@@ -72,8 +72,8 @@ Este é o **desafio técnico Paggue**, um sistema completo para gerenciamento de
 
 ## 🚩 Uso
 
-* Acesse a aplicação em: `http://localhost:8000`
-* Base da API: `http://localhost:8000/api/v1`
+* Acesse a aplicação em: `http://localhost:8080`
+* Base da API: `http://localhost:8080/api/v1`
 * Liste as rotas da API:
 
   ```bash
