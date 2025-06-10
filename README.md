@@ -59,15 +59,15 @@ Este é o **desafio técnico Paggue**, um sistema completo para gerenciamento de
 3. Suba os containers Docker:
 
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 4. Instale dependências e prepare a aplicação:
 
    ```bash
-   docker-compose exec app composer install
-   docker-compose exec app php artisan key:generate
-   docker-compose exec app php artisan migrate --seed
-   docker-compose exec app php artisan passport:install
+   docker exec -it -w /var/www  desafio-tecnico-paggue-app-1 bash
+   php artisan key:generate
+   php artisan migrate:fresh --seed
+   php artisan passport:install
    ```
 
 ## 🚩 Uso
@@ -77,7 +77,8 @@ Este é o **desafio técnico Paggue**, um sistema completo para gerenciamento de
 * Liste as rotas da API:
 
   ```bash
-  docker-compose exec app php artisan route:list --path=api/v1
+  docker exec -it -w /var/www  desafio-tecnico-paggue-app-1 bash
+  php artisan route:list --path=api/v1
   ```
 
 ## 🔄 Filas e Jobs
@@ -88,10 +89,11 @@ Este é o **desafio técnico Paggue**, um sistema completo para gerenciamento de
   1. `ProcessPaymentJob` (fila `payments`): envia requisição ao gateway de pagamento.
   2. `HandlePaymentWebhookJob` (fila `default`): processa retorno do webhook.
   3. `SendNotificationJob` (fila `notifications`): notifica usuário via email/SMS.
-* Inicie o worker de filas:
+* Inicie o worker de filas manualmente:
 
   ```bash
-  docker-compose exec app php artisan queue:work --queue=payments,default,notifications
+  docker exec -it -w /var/www  desafio-tecnico-paggue-app-1 bash
+  php artisan queue:work --queue=payments,default,notifications
   ```
 
 ## 🧪 Testes
@@ -99,7 +101,8 @@ Este é o **desafio técnico Paggue**, um sistema completo para gerenciamento de
 * Execute a suíte de testes com Pest:
 
   ```bash
-  docker-compose exec app vendor/bin/pest
+  docker exec -it -w /var/www  desafio-tecnico-paggue-app-1 bash
+  vendor/bin/pest --coverage
   ```
 
 ## 🔐 Controle de Acesso e Autenticação
