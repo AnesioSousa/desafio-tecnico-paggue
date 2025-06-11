@@ -1,9 +1,10 @@
 <?php
-
+// src/app/Http/Controllers/OrderController.php
 namespace App\Http\Controllers;
 use App\Models\Order;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -43,9 +44,25 @@ class OrderController extends Controller
     {
         $data = $request->validate([
             'total' => 'required|numeric',
+            'tickets' => 'required|array|min:1',
+            'tickets.*.batch_id' => 'required|exists:batches,id',
+            'tickets.*.coupon_id' => 'nullable|exists:coupons,id',
         ]);
+
         $data['user_id'] = $request->user()->id;
-        return Order::create($data);
+
+        // Transaction to ensure atomicity
+        $order = DB::transaction(function () use ($data) {
+            $tickets = $data['tickets'];
+            unset($data['tickets']);
+
+            $order = Order::create($data);
+            $order->tickets()->createMany($tickets);
+
+            return $order;
+        });
+
+        return response()->json($order->load('tickets'), 201);
     }
 
     /**
