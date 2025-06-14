@@ -12,10 +12,41 @@ return new class extends Migration {
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
+
+            // FK para o pedido
+            $table->foreignId('order_id')
+                ->constrained('orders')
+                ->onDelete('cascade');
+
+            // UUID para correlacionar com external_id da Paggue
+            $table->uuid('external_id')->unique();
+
+            // Dados da cobrança
+            $table->string('payer_name');
+            $table->unsignedBigInteger('amount'); // em centavos
+            $table->string('description')->nullable();
+
+            // Payload bruto retornado pela Paggue
             $table->json('pix_payload')->nullable();
+
+            // Se a Paggue retornar transaction_id separado
             $table->string('pix_transaction_id')->nullable();
-            $table->enum('status', ['waiting', 'success', 'failed'])->default('waiting');
+
+            // Código PIX em si (qr code/string)
+            $table->text('payment')->nullable();
+
+            // Identificadores extras
+            $table->string('end_to_end_id')->nullable();
+            $table->string('reference')->nullable();
+
+            // Status do fluxo interno
+            $table->enum('status', ['waiting', 'success', 'failed'])
+                ->default('waiting');
+
+            // Quando foi pago / expirou
+            $table->timestamp('paid_at')->nullable();
+            $table->timestamp('expiration_at')->nullable();
+
             $table->timestamps();
         });
     }

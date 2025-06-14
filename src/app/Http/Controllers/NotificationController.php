@@ -1,5 +1,6 @@
 <?php
 
+// src/app/Http/Controllers/NotificationController.php
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreNotificationRequest;

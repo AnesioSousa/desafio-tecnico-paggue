@@ -12,6 +12,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\Webhook\PaymentWebhookController;
 
 
 Route::prefix('v1')->group(function () {
@@ -19,7 +20,9 @@ Route::prefix('v1')->group(function () {
     Route::post('register', [AuthController::class, 'register'])->name('register');
     Route::post('login', [AuthController::class, 'login'])->name('login');
     Route::post('payments/fake', [PaymentController::class, 'fake'])->middleware('auth:api');
-
+    Route::post('webhooks/payment', [PaymentWebhookController::class, 'handle'])
+        ->name('webhooks.payment');
+    ;
     Route::middleware('auth:api')->group(function () {
         // admin-only…
         Route::middleware('role:admin')
@@ -41,15 +44,3 @@ Route::prefix('v1')->group(function () {
         Route::apiResource('tickets', TicketController::class);
     });
 });
-
-
-
-/*  // Public endpoints
-  Route::post('register', [AuthController::class, 'register']);
-  Route::post('login', [AuthController::class, 'login']);
-
-  // Protected (need Bearer token)
-  Route::middleware('auth:api')->group(function () {
-
-});
-*/
