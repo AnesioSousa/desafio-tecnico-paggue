@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Event;
 use App\Models\Sector;
 use App\Models\Batch;
+use App\Models\Coupon;
 use Spatie\Permission\Models\Role;
 
 class DemoDataSeeder extends Seeder
@@ -103,6 +104,14 @@ class DemoDataSeeder extends Seeder
             'end_date' => '2025-06-15',
             'price' => 80.00,
             'total_quantity' => 100,
+        ]);
+
+        Coupon::create([
+            'code' => 'SUMMER21',
+            'discount' => 15.0,
+            'valid_from' => '2025-06-01',
+            'valid_until' => '2025-06-30',
+            'max_uses' => 100,
         ]);
     }
 }
