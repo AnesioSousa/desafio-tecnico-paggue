@@ -11,6 +11,12 @@ class Coupon extends Model
 
     protected $fillable = ['code', 'discount', 'valid_from', 'valid_until', 'max_uses'];
 
+    protected $casts = [
+        'discount' => 'float',
+        'valid_from' => 'date',
+        'valid_until' => 'date',
+    ];
+
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
