@@ -31,4 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'paggue' => [
+        'token' => env('PAGGUE_TOKEN'),
+        'company_id' => env('PAGGUE_COMPANY_ID'),
+    ],
+
 ];

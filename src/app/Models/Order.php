@@ -1,33 +1,24 @@
 <?php
+// src/app/Models/Order.php
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'total',
-        'status',
-    ];
+    protected $fillable = ['user_id', 'total', 'status'];
 
-    /**
-     * The user who placed this order.
-     */
-    public function user()
+    public function items()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(OrderItem::class);
     }
 
-    /**
-     * The tickets associated with this order.
-     */
-    public function tickets()
+    public function payment()
     {
-        return $this->hasMany(Ticket::class);
+        return $this->hasOne(Payment::class);
     }
 }

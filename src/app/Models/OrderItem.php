@@ -1,22 +1,25 @@
 <?php
+// src/app/Models/OrderItem.php
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Ticket extends Model
+class OrderItem extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'order_id',
-        'user_id',
         'batch_id',
+        'quantity',
         'coupon_id',
-        'code',
-        'status',
+        'unit_price',
+        'discount_value',
     ];
+
 
     public function order()
     {
@@ -33,3 +36,4 @@ class Ticket extends Model
         return $this->belongsTo(Coupon::class);
     }
 }
+

@@ -14,7 +14,6 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Webhook\PaymentWebhookController;
 
-
 Route::prefix('v1')->group(function () {
     // Public endpoints
     Route::post('register', [AuthController::class, 'register'])->name('register');
@@ -22,13 +21,14 @@ Route::prefix('v1')->group(function () {
     Route::post('payments/fake', [PaymentController::class, 'fake'])->middleware('auth:api');
     Route::post('webhooks/payment', [PaymentWebhookController::class, 'handle'])
         ->name('webhooks.payment');
-    ;
+
+    // Protected endpoints (require auth)
     Route::middleware('auth:api')->group(function () {
-        // admin-only…
+        // Admin-only
         Route::middleware('role:admin')
             ->apiResource('producers', ProducerController::class);
 
-        // producers & admins (full CRUD)…
+        // Producers & admins (full CRUD)
         Route::middleware('role:producer|admin')->group(function () {
             Route::apiResource('events', EventController::class);
             Route::apiResource('sectors', SectorController::class);
@@ -38,8 +38,7 @@ Route::prefix('v1')->group(function () {
             Route::apiResource('notifications', NotificationController::class);
         });
 
-        // orders & tickets: **all** authenticated users hit these,
-        // but your policies will gate create/read/update/delete
+        // Orders & tickets: all authenticated users, policies will gate access
         Route::apiResource('orders', OrderController::class);
         Route::apiResource('tickets', TicketController::class);
     });

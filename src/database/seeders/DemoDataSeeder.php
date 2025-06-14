@@ -88,27 +88,27 @@ class DemoDataSeeder extends Seeder
             'sector_id' => $sectorA->id,
             'start_date' => '2025-06-01',
             'end_date' => '2025-06-10',
-            'price' => 100.00,
+            'price' => 0.05,
             'total_quantity' => 50,
         ]);
         Batch::create([
             'sector_id' => $sectorA->id,
             'start_date' => '2025-06-11',
             'end_date' => '2025-06-20',
-            'price' => 120.00,
+            'price' => 0.06,
             'total_quantity' => 50,
         ]);
         Batch::create([
             'sector_id' => $sectorB->id,
             'start_date' => '2025-06-05',
             'end_date' => '2025-06-15',
-            'price' => 80.00,
+            'price' => 0.03,
             'total_quantity' => 100,
         ]);
 
         Coupon::create([
             'code' => 'SUMMER21',
-            'discount' => 15.0,
+            'discount' => 0.01,
             'valid_from' => '2025-06-01',
             'valid_until' => '2025-06-30',
             'max_uses' => 100,

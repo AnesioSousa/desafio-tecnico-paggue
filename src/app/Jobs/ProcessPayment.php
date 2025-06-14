@@ -4,6 +4,8 @@
 namespace App\Jobs;
 
 use App\Models\Payment;
+use App\Models\Ticket;
+use Illuminate\Support\Str;
 use App\Jobs\NotifyAdminOfPayment;
 use App\Jobs\NotifyCustomerOfTickets;
 use Illuminate\Bus\Queueable;
@@ -35,6 +37,20 @@ class ProcessPayment implements ShouldQueue
 
         // 1) Marca o pedido como pago
         $order->update(['status' => 'paid']);
+
+        foreach ($order->items as $item) {
+            for ($i = 0; $i < $item->quantity; $i++) {
+                Ticket::create([
+                    'order_id' => $order->id,
+                    'user_id' => $order->user_id,
+                    'batch_id' => $item->batch_id,
+                    'coupon_id' => $item->coupon_id,
+                    'code' => Str::uuid(),
+                    'status' => 'paid',
+                    // 'price_paid' => optional
+                ]);
+            }
+        }
 
         // 2) Dispara notificações
         //NotifyAdminOfPayment::dispatch($order);

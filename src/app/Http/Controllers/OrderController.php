@@ -1,10 +1,15 @@
 <?php
 // src/app/Http/Controllers/OrderController.php
-namespace App\Http\Controllers;
-use App\Models\Order;
 
+namespace App\Http\Controllers;
+
+use App\Models\Order;
+use App\Models\OrderItem;
+use App\Models\Batch;
+use App\Models\Coupon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class OrderController extends Controller
 {
@@ -13,88 +18,93 @@ class OrderController extends Controller
         $this->middleware('auth:api');
         $this->authorizeResource(Order::class, 'order');
     }
-    /**
-     * Display a listing of the resource.
-     */
 
     public function index(Request $request)
     {
-        $query = Order::with('tickets');
-
+        $query = Order::with('items.batch', 'items.coupon', 'payment');
         if ($request->user()->hasRole('client')) {
             $query->where('user_id', $request->user()->id);
         }
-
         return $query->get();
     }
 
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'total' => 'required|numeric',
+        // 1) validação
+        $payload = $request->validate([
             'tickets' => 'required|array|min:1',
             'tickets.*.batch_id' => 'required|exists:batches,id',
+            'tickets.*.quantity' => 'required|integer|min:1',
             'tickets.*.coupon_id' => 'nullable|exists:coupons,id',
         ]);
 
-        $data['user_id'] = $request->user()->id;
+        $user = $request->user();
 
-        // Transaction to ensure atomicity
-        $order = DB::transaction(function () use ($data) {
-            $tickets = $data['tickets'];
-            unset($data['tickets']);
+        // 2) transação: calcula total e cria order+items
+        $order = DB::transaction(function () use ($payload, $user) {
+            $total = 0;
+            $items = [];
 
-            $order = Order::create($data);
-            $order->tickets()->createMany($tickets);
+            foreach ($payload['tickets'] as $t) {
+                $batch = Batch::lockForUpdate()->find($t['batch_id']);
+                $qty = $t['quantity'];
+                $price = $batch->price;
+                $discount = 0;
+
+                if (!empty($t['coupon_id'])) {
+                    $coupon = Coupon::find($t['coupon_id']);
+                    $discount = $coupon->discount;
+                }
+
+                $line = $price * $qty - $discount;
+                if ($line < 0) {
+                    throw ValidationException::withMessages([
+                        'tickets' => "Desconto maior que o total do lote #{$batch->id}"
+                    ]);
+                }
+                $total += $line;
+
+                $items[] = [
+                    'batch_id' => $batch->id,
+                    'quantity' => $qty,
+                    'coupon_id' => $t['coupon_id'] ?? null,
+                    'unit_price' => $price,
+                    'discount' => $discount,
+                ];
+            }
+
+            $order = Order::create([
+                'user_id' => $user->id,
+                'total' => $total,
+                'status' => 'pending',
+            ]);
+
+            foreach ($items as $it) {
+                $it['order_id'] = $order->id;
+                OrderItem::create($it);
+            }
 
             return $order;
         });
 
-        return response()->json($order->load('tickets'), 201);
+        // 3) resposta: apenas order_id e total
+        return response()->json([
+            'order_id' => $order->id,
+            'total' => $order->total,
+        ], 201);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Order $order)
     {
-        $this->authorize('view', $order);
-
-        return $order->load('tickets');
+        return $order->load('items.batch', 'items.coupon', 'payment');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Order $order)
     {
-        $order->update($request->only(['total', 'status']));
-        return $order;
+        $order->update($request->only(['status']));
+        return response()->json($order->fresh());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Order $order)
     {
         $order->delete();
